@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import recommendedProfiles from "../queries/recommendedProfilesQuery.js";
-import Profile from "../components/Profile.js";
+import Profile from "../components/Profiles.js";
+import Header from "../components/Header.js";
 
 export default function Home() {
   const { loading, error, data } = useQuery(recommendedProfiles);
@@ -10,6 +11,7 @@ export default function Home() {
 
   return (
     <div>
+      <Header />
       {data.recommendedProfiles.map((profile, index) => {
         console.log(`Profile ${index}:`, profile);
         return (
