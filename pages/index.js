@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import recommendedProfiles from "../queries/recommendedProfilesQuery.js";
-import Profile from "../components/Profiles.js";
+import Publication from "../components/Publication.js";
 import Header from "../components/Header.js";
 
 export default function Home() {
@@ -12,16 +12,17 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {/* {data.recommendedProfiles.map((profile, index) => {
-        console.log(`Profile ${index}:`, profile);
-        return (
-          <Profile
-            key={profile.id}
-            profile={profile}
-            displayFullProfile={false}
-          />
-        );
-      })} */}
+      <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Feed</h1>
+        </div>
+      </header>
+      <main>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+          Post your wildest updates ;p
+        </div>
+      </main>
+      <Publication />
     </div>
   );
 }
