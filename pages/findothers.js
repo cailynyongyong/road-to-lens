@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {/* {data.recommendedProfiles.map((profile, index) => {
+      {data.recommendedProfiles.map((profile, index) => {
         console.log(`Profile ${index}:`, profile);
         return (
           <Profile
@@ -21,7 +21,7 @@ export default function Home() {
             displayFullProfile={false}
           />
         );
-      })} */}
+      })}
     </div>
   );
 }

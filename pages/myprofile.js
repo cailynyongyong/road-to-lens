@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import myprofile from "../queries/getProfileById.js";
 import Profile from "../components/Profiles.js";
-import Post from "../components/Post.js";
+import Publication from "../components/Publication.js";
 import Header from "../components/Header.js";
 
 export default function MyProfilePage() {
@@ -24,6 +24,7 @@ export default function MyProfilePage() {
           profile={data.profile}
           displayFullProfile={false}
         />
+        <Publication />
       </div>
     </div>
   );

@@ -142,7 +142,10 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/findothers"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Find Others
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -200,7 +203,7 @@ export default function Header() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="py-6 space-y-2">
                 <a
-                  href="/"
+                  href="/findothers"
                   className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
                 >
                   Find Others
