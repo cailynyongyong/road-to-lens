@@ -1,8 +1,12 @@
 // components/Publication.js
-import { Fragment, useState } from "react";
-export default function Publication() {
+import { useState } from "react";
+export default function Publication(props) {
+  const profile = props.profile;
   const [content, setContent] = useState("");
   const [contentList, setContentList] = useState([]);
+
+  // When displayFullProfile is true, we show more info.
+  const displayFullProfile = props.displayFullProfile;
 
   async function post() {
     console.log("entering post function");
@@ -11,7 +15,7 @@ export default function Publication() {
 
   return (
     <div>
-      <div class="p-14">
+      <div class="p-10">
         <label
           for="about"
           class="block text-m font-medium leading-6 text-gray-900"
@@ -35,35 +39,55 @@ export default function Publication() {
           </div>
         </div>
       </div>
-      {contentList?.length <= 0 ? (
-        <div className="p-8">
-          <div className="max-w-md mx-auto overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
-            <div className="md:flex">
-              <div className="p-8">
-                <p className="mt-2 text-xs whitespace-pre-line text-slate-500">
-                  Nothing Uploaded Yet.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        contentList.map((e, v) => {
-          return (
-            <div className="p-8">
-              <div className="max-w-md mx-auto overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
-                <div className="md:flex">
-                  <div className="p-8">
-                    <p className="mt-2 text-xs whitespace-pre-line text-slate-500">
-                      {e}
-                    </p>
+      {contentList?.length <= 0
+        ? console.log()
+        : contentList
+            .slice()
+            .reverse()
+            .map((post, v) => {
+              return (
+                <div className="p-8">
+                  <div className="max-w-md mx-auto overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
+                    <div className="md:flex">
+                      <div className="md:shrink-0">
+                        {profile.picture ? (
+                          <img
+                            class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                            src={
+                              profile.picture.original
+                                ? profile.picture.original.url
+                                : profile.picture.uri
+                            }
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              backgrondColor: "gray",
+                            }}
+                            className="object-cover w-full h-48 md:h-full md:w-48"
+                          />
+                        )}
+                      </div>
+                      <div className="p-8">
+                        <div className="text-sm font-semibold tracking-wide text-indigo-500 uppercase">
+                          {profile.handle}
+                          {displayFullProfile &&
+                            profile.name &&
+                            " (" + profile.name + ")"}
+                        </div>
+                        <div className="mt-2 text-sm text-slate-900">
+                          {post}
+                        </div>
+                        <p className="mt-2 text-xs text-slate-500">
+                          following: {profile.stats.totalFollowing} followers:{" "}
+                          {profile.stats.totalFollowers}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        })
-      )}
+              );
+            })}
     </div>
   );
 }
