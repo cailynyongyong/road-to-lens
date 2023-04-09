@@ -30,9 +30,9 @@ export default function Home() {
   const id = "0x01c634";
   const { loading, error, data } = useQuery(fetchProfileQuery, {
     variables: {
-      request: { profileId: idList[1] },
+      request: { profileId: idList[5] },
       publicationsRequest: {
-        profileId: idList[1],
+        profileId: idList[5],
         publicationTypes: ["POST"], // We really only want POSTs
       },
     },

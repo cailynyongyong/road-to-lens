@@ -33,7 +33,7 @@ export default function ProfilePage() {
       <div className="flex flex-col items-center p-8">
         <Profile profile={data.profile} displayFullProfile={true} />
         {data.publications.items.map((post, idx) => {
-          return <Post key={idx} post={post} />;
+          return <Post key={idx} profile={data.profile} post={post} />;
         })}
       </div>
     </div>
