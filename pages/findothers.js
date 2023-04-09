@@ -10,7 +10,7 @@ export default function Home() {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div>
+    <div class="bg-black">
       <Header />
       {data.recommendedProfiles.map((profile, index) => {
         console.log(`Profile ${index}:`, profile);

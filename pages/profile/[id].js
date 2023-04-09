@@ -28,7 +28,7 @@ export default function ProfilePage() {
   console.log("on profile page data: ", data);
 
   return (
-    <div>
+    <div class="bg-black">
       <Header />
       <div className="flex flex-col items-center p-8">
         <Profile profile={data.profile} displayFullProfile={true} />

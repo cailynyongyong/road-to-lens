@@ -4,10 +4,10 @@ export default function Post(props) {
 
   return (
     <div className="p-8">
-      <div className="max-w-md mx-auto overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
+      <div className="max-w-md mx-auto overflow-hidden bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
         <div className="md:flex">
           <div className="p-8">
-            <p className="mt-2 text-xs whitespace-pre-line text-slate-500">
+            <p className="mt-2 text-xs text-white whitespace-pre-line">
               {post.metadata.content}
             </p>
           </div>

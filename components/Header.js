@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -116,9 +116,9 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white">
+    <header className="bg-black">
       <nav
-        className="flex items-center justify-between p-6 mx-auto max-w-7xl lg:px-8"
+        className="flex items-center justify-between p-6 mx-auto border border-gray-700 max-w-7xl lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -126,7 +126,7 @@ export default function Header() {
             <span className="sr-only">Your Company</span>
             <img
               className="w-auto h-8"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500"
               alt=""
             />
           </a>
@@ -138,22 +138,25 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="w-6 h-6" aria-hidden="true" />
+            <Bars3Icon className="w-6 h-6 text-green-500" aria-hidden="true" />
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            href="/"
+            className="text-sm font-semibold leading-6 text-green-500"
+          >
             Home Feed
           </a>
           <a
             href="/findothers"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 text-green-500"
           >
             Find Others
           </a>
           <a
             href="/profile/0x01c634"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 text-green-500"
           >
             Profile
           </a>
@@ -163,15 +166,10 @@ export default function Header() {
           className="hidden lg:flex lg:flex-1 lg:justify-end"
           onClick={connect}
         >
-          <span className="text-sm font-semibold leading-6 text-gray-900">
+          <span className="text-sm font-semibold leading-6 text-green-500">
             Connect Wallet <span aria-hidden="true">&rarr;</span>
           </span>
         </button>
-        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div> */}
       </nav>
       <Dialog
         as="div"
@@ -180,19 +178,19 @@ export default function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full px-6 py-6 overflow-y-auto bg-black sm:max-w-sm sm:ring-1 sm:ring-white">
           <div className="flex items-center justify-between">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="w-auto h-8"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500"
                 alt=""
               />
             </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-white"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
@@ -204,36 +202,30 @@ export default function Header() {
               <div className="py-6 space-y-2">
                 <a
                   href="/"
-                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-green-500 rounded-lg hover:bg-green-50"
                 >
                   Home Feed
                 </a>
                 <a
                   href="/findothers"
-                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-green-500 rounded-lg hover:bg-green-50"
                 >
                   Find Others
                 </a>
                 <a
                   href="/profile/0x01c634"
-                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-green-500 rounded-lg hover:bg-green-50"
                 >
                   Profile
                 </a>
               </div>
               <div className="py-6">
-                {/* <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Connect Wallet
-                </a> */}
                 <button
                   type="button"
-                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  className="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-green-500 rounded-lg hover:bg-green-50"
                   onClick={connect}
                 >
-                  <span className="text-sm font-semibold leading-6 text-gray-900">
+                  <span className="font-semibold leading-6 text-green-500 text-m">
                     Connect Wallet <span aria-hidden="true">&rarr;</span>
                   </span>
                 </button>
