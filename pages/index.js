@@ -3,7 +3,6 @@ import recommendedProfiles from "../queries/recommendedProfilesQuery.js";
 import Publication from "../components/Publication.js";
 import Header from "../components/Header.js";
 import Feed from "../components/Feed.js";
-import fetchProfileQuery from "../queries/fetchProfileQuery.js";
 import LensClient, { mumbai, polygon } from "@lens-protocol/client";
 import { useState, useEffect } from "react";
 
@@ -19,34 +18,22 @@ export default function Home() {
 
   useEffect(() => {
     async function getPublications() {
+      if (data == undefined || data == null) return;
       const idList = [];
 
-      data?.recommendedProfiles.map((profile) => {
+      data.recommendedProfiles.map((profile) => {
         idList.push(profile.id);
       });
-
-      console.log("Id lists: ", idList);
 
       const result = await lensClient.publication.fetchAll({
         profileIds: idList,
         publicationTypes: ["POST"],
-        limit: 10,
       });
       setContent(result.items);
-      console.log("recommended result:", result.items);
-      console.log(
-        "picture url: ",
-        result.items[1].profile.picture.original.url
-      );
-      console.log(
-        "https://lens.infura-ipfs.io/ipfs/" +
-          result.items[1].profile.picture.original.url.split("//")[-1]
-      );
 
       const myresult = await lensClient.publication.fetchAll({
         profileId: "0x01c634",
         publicationTypes: ["POST"],
-        limit: 10,
       });
       const profile = myresult.items[0].profile;
       setMyProfile(profile);
@@ -62,7 +49,7 @@ export default function Home() {
           <h1 class="text-3xl font-bold tracking-tight text-green-500">Feed</h1>
         </div>
       </header>
-      <main>
+      <div>
         <Publication profile={myprofile} displayFullProfile={true} />
         {content.map((e, index) => {
           return (
@@ -76,7 +63,7 @@ export default function Home() {
             </div>
           );
         })}
-      </main>
+      </div>
     </div>
   );
 }

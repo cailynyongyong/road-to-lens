@@ -4,8 +4,6 @@ import Link from "next/link";
 export default function Profile(props) {
   const profile = props.profile;
 
-  console.log(profile.picture);
-
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
 

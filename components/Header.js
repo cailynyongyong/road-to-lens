@@ -116,9 +116,9 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-black">
+    <header className="sticky top-0 z-30 w-full bg-black">
       <nav
-        className="flex items-center justify-between p-6 mx-auto border border-gray-700 max-w-7xl lg:px-8"
+        className="flex items-center justify-between max-w-full p-6 mx-auto border-b border-gray-700 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

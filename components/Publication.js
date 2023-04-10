@@ -18,14 +18,14 @@ export default function Publication(props) {
       <div class="p-10">
         <label
           for="about"
-          class="block text-m font-medium leading-6 text-green-500"
+          class="block min-w-full max-w-full mx-auto md:max-w-2xl text-m font-medium leading-6 text-green-500"
         >
           Post
         </label>
         <div class="mt-2">
           <textarea
             rows="3"
-            class="block w-full rounded-md border border-gray-600 bg-black text-white shadow-sm  placeholder:text-gray-400  focus:ring-green-600 sm:py-1.5 sm:text-sm sm:leading-6"
+            class="min-w-full max-w-full mx-auto md:max-w-2xl rounded-md border border-gray-600 bg-black text-white shadow-sm  placeholder:text-gray-400  focus:ring-green-600 sm:py-1.5 sm:text-sm sm:leading-6"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
           <div class="mt-2 flex items-center justify-end gap-x-6">
@@ -47,7 +47,7 @@ export default function Publication(props) {
             .map((post, v) => {
               return (
                 <div className="p-4">
-                  <div className="max-w-md mx-auto overflow-hidden bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
+                  <div className="max-w-full mx-auto overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
                     <div className="md:flex">
                       <div className="p-4 md:shrink-0">
                         {profile.picture ? (
