@@ -4,42 +4,48 @@ import Publication from "../components/Publication.js";
 import Header from "../components/Header.js";
 import Feed from "../components/Feed.js";
 import fetchProfileQuery from "../queries/fetchProfileQuery.js";
+import LensClient, { mumbai, polygon } from "@lens-protocol/client";
+import { useState, useEffect } from "react";
 
-function list() {
-  const { loading, error, data } = useQuery(recommendedProfiles);
-  const idList = [];
-  console.log(data);
-
-  data.recommendedProfiles.map((profile, index) => {
-    console.log("profileid:", profile.id);
-    idList.push(profile.id);
-  });
-
-  console.log("Id lists: ", idList);
-
-  if (loading) return "Loading..";
-  if (error) return `Error! ${error.message}`;
-
-  return idList;
-}
+const lensClient = new LensClient({
+  environment: polygon,
+});
 
 export default function Home() {
-  //list();
-  const idList = list();
-  console.log("Id list called from default function: ", idList);
-  const id = "0x01c634";
-  const { loading, error, data } = useQuery(fetchProfileQuery, {
-    variables: {
-      request: { profileId: idList[5] },
-      publicationsRequest: {
-        profileId: idList[5],
-        publicationTypes: ["POST"], // We really only want POSTs
-      },
-    },
-  });
+  const [content, setContent] = useState([]);
+  const [myprofile, setMyProfile] = useState([]);
 
-  if (loading) return "Loading..";
-  if (error) return `Error! ${error.message}`;
+  const { loading, error, data } = useQuery(recommendedProfiles);
+
+  useEffect(() => {
+    async function getPublications() {
+      const idList = [];
+
+      data?.recommendedProfiles.map((profile) => {
+        idList.push(profile.id);
+      });
+
+      console.log("Id lists: ", idList);
+
+      const result = await lensClient.publication.fetchAll({
+        profileIds: idList,
+        publicationTypes: ["POST"],
+        limit: 10,
+      });
+      setContent(result.items);
+      console.log("recommended result:", result.items);
+
+      const myresult = await lensClient.publication.fetchAll({
+        profileId: "0x01c634",
+        publicationTypes: ["POST"],
+        limit: 10,
+      });
+      const profile = myresult.items[0].profile;
+      setMyProfile(profile);
+      console.log("my result: ", myresult);
+    }
+    getPublications();
+  }, [data]);
 
   return (
     <div class="bg-black">
@@ -50,8 +56,15 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <Publication profile={data.profile} displayFullProfile={true} />
-        {data.publications.items.map((post, index) => {
+        <Publication profile={myprofile} displayFullProfile={true} />
+        {content.map((e) => {
+          return (
+            <div>
+              <Feed profile={e.profile} displayFullProfile={true} post={e} />
+            </div>
+          );
+        })}
+        {/* {data.publications.items.map((post, index) => {
           return (
             <Feed
               key={index}
@@ -60,7 +73,7 @@ export default function Home() {
               post={post}
             />
           );
-        })}
+        })} */}
       </main>
     </div>
   );
