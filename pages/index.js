@@ -34,6 +34,14 @@ export default function Home() {
       });
       setContent(result.items);
       console.log("recommended result:", result.items);
+      console.log(
+        "picture url: ",
+        result.items[1].profile.picture.original.url
+      );
+      console.log(
+        "https://lens.infura-ipfs.io/ipfs/" +
+          result.items[1].profile.picture.original.url.split("//")[-1]
+      );
 
       const myresult = await lensClient.publication.fetchAll({
         profileId: "0x01c634",
@@ -42,7 +50,6 @@ export default function Home() {
       });
       const profile = myresult.items[0].profile;
       setMyProfile(profile);
-      console.log("my result: ", myresult);
     }
     getPublications();
   }, [data]);
@@ -57,23 +64,18 @@ export default function Home() {
       </header>
       <main>
         <Publication profile={myprofile} displayFullProfile={true} />
-        {content.map((e) => {
+        {content.map((e, index) => {
           return (
             <div>
-              <Feed profile={e.profile} displayFullProfile={true} post={e} />
+              <Feed
+                key={index}
+                profile={e.profile}
+                displayFullProfile={true}
+                post={e}
+              />
             </div>
           );
         })}
-        {/* {data.publications.items.map((post, index) => {
-          return (
-            <Feed
-              key={index}
-              profile={data.profile}
-              displayFullProfile={true}
-              post={post}
-            />
-          );
-        })} */}
       </main>
     </div>
   );

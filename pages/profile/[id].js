@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import fetchProfileQuery from "../../queries/fetchProfileQuery.js";
 import Profile from "../../components/Profiles.js";
-import Post from "../../components/Post.js";
+import Feed from "../../components/Feed.js";
 import Header from "../../components/Header.js";
 
 export default function ProfilePage() {
@@ -33,7 +33,7 @@ export default function ProfilePage() {
       <div className="flex flex-col items-center p-8">
         <Profile profile={data.profile} displayFullProfile={true} />
         {data.publications.items.map((post, idx) => {
-          return <Post key={idx} profile={data.profile} post={post} />;
+          return <Feed key={idx} profile={data.profile} post={post} />;
         })}
       </div>
     </div>

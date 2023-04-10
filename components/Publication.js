@@ -55,7 +55,12 @@ export default function Publication(props) {
                             class="inline-block h-12 w-12 rounded-full border border-gray-600"
                             src={
                               profile.picture.original
-                                ? profile.picture.original.url
+                                ? profile.picture.original.url.split("//")[0] ==
+                                  "ipfs:"
+                                  ? "https://lens.infura-ipfs.io/ipfs/" +
+                                    profile.picture.original.url.split("//")[1]
+                                  : "https://lens.infura-ipfs.io/ipfs/" +
+                                    profile.picture.original.url.split("/")[4]
                                 : profile.picture.uri
                             }
                           />

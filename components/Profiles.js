@@ -4,6 +4,8 @@ import Link from "next/link";
 export default function Profile(props) {
   const profile = props.profile;
 
+  console.log(profile.picture);
+
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
 
@@ -18,7 +20,11 @@ export default function Profile(props) {
                   class="inline-block h-14 w-14 rounded-full border border-gray-600"
                   src={
                     profile.picture.original
-                      ? profile.picture.original.url
+                      ? profile.picture.original.url.split("//")[0] == "ipfs:"
+                        ? "https://lens.infura-ipfs.io/ipfs/" +
+                          profile.picture.original.url.split("//")[1]
+                        : "https://lens.infura-ipfs.io/ipfs/" +
+                          profile.picture.original.url.split("/")[4]
                       : profile.picture.uri
                   }
                 />
