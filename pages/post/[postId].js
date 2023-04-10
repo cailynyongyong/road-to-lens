@@ -40,12 +40,10 @@ export default function PostPage() {
       setProfile(result.profile);
       console.log("result:", result);
 
-      //   const comments = await lensClient.publication.fetchAll({
-      //     profileId: result.profile.id,
-      //     publicationTypes: ["COMMENT"],
-      //   });
-      //   console.log("comments: ", comments.items);
-      //   setComment(comments.items);
+      const comments = await lensClient.publication.fetchAll({
+        commentsOf: postId,
+      });
+      setComment(comments.items);
     }
 
     getPublications();
@@ -62,7 +60,7 @@ export default function PostPage() {
         {profiles.length != 0 && content.length != 0 && (
           <Feed profile={profiles} post={content} />
         )}
-        {/* {comment.map((item) => {
+        {comment.map((item) => {
           return (
             <div>
               <Feed
@@ -72,7 +70,7 @@ export default function PostPage() {
               />
             </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
