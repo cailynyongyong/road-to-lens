@@ -23,7 +23,7 @@ export default function Publication(props) {
         </label>
         <div class="ml-10 mt-2 max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
           <input
-            class="placeholder:italic placeholder:text-slate-400 block text-white bg-black w-full border border-black rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none sm:text-sm"
+            class="placeholder:italic overflow-y-scroll placeholder:text-slate-400 block text-white bg-black w-full border border-black rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none sm:text-sm"
             placeholder="What's happening?"
             type="text"
             onChange={(e) => setContent(e.target.value)}

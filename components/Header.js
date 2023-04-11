@@ -72,7 +72,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 w-full bg-black">
       <nav
-        className="flex max-w-full p-4 border-b border-gray-700 lg:px-8"
+        className="flex justify-between max-w-full p-4 mx-auto border-b border-gray-700 lg:px-8"
         aria-label="Global"
       >
         <div className="flex ml-10 sm:flex-1">
