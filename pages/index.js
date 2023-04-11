@@ -5,7 +5,7 @@ import Header from "../components/Header.js";
 import Feed from "../components/Feed.js";
 import LensClient, { mumbai, polygon } from "@lens-protocol/client";
 import { useState, useEffect } from "react";
-import Background from "../components/Background.js";
+import FollowList from "../components/FollowList.js";
 
 const lensClient = new LensClient({
   environment: polygon,
@@ -50,7 +50,8 @@ export default function Home() {
           <h1 class="text-3xl font-bold tracking-tight text-green-500">Feed</h1>
         </div>
       </header> */}
-      <div>
+      <div class="mt-5 ml-5 container border border-gray-600 rounded-xl">
+        {/* <FollowList /> */}
         <Publication profile={myprofile} displayFullProfile={true} />
         {content.map((e, index) => {
           return (

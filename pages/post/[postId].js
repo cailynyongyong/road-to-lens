@@ -2,12 +2,10 @@
 
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import Profile from "../../components/Profiles.js";
 import Feed from "../../components/Feed.js";
 import Header from "../../components/Header.js";
 import LensClient, { mumbai, polygon } from "@lens-protocol/client";
 import { useState, useEffect } from "react";
-import Background from "../../components/Background.js";
 
 const lensClient = new LensClient({
   environment: polygon,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -17,6 +17,31 @@ export default function Header() {
   const [hasQueried, setHasQueried] = useState(false);
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+
+  // const handleSubmit = () => {
+  //   console.log("form submitted ✅");
+  // };
+
+  // useEffect(() => {
+  //   const keyDownHandler = (event) => {
+  //     console.log("User pressed: ", event.key);
+
+  //     console.log("search input:", search);
+
+  //     if (event.key === "Enter") {
+  //       event.preventDefault();
+
+  //       // 👇️ call submit function here
+  //       handleSubmit();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", keyDownHandler);
+
+  //   return () => {
+  //     document.removeEventListener("keydown", keyDownHandler);
+  //   };
+  // }, []);
 
   async function getTokenBalance() {
     setLoading(true);
@@ -119,6 +144,7 @@ export default function Header() {
               class="placeholder:italic placeholder:text-slate-400 block text-slate-400 bg-slate-800 w-full border border-slate-800 rounded-md py-1 pl-9 pr-3 shadow-sm focus:outline-none sm:text-sm"
               placeholder="Search for anything..."
               type="text"
+              onChange={(e) => setSearch(e.target.value)}
             />
           </label>
           <a
