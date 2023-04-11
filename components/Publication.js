@@ -9,23 +9,22 @@ export default function Publication(props) {
   const displayFullProfile = props.displayFullProfile;
 
   async function post() {
-    console.log("entering post function");
     setContentList([...contentList, content]);
   }
 
   return (
     <div>
-      <div class="p-10">
+      <div class=" p-4">
         <label
           for="about"
-          class="block min-w-full max-w-full mx-auto md:max-w-2xl text-m font-medium leading-6 text-green-500"
+          class="block text-m font-medium leading-6 text-green-500"
         >
           Post
         </label>
-        <div class="mt-2">
+        <div class="mt-2 max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
           <textarea
             rows="3"
-            class="min-w-full max-w-full mx-auto md:max-w-2xl rounded-md border border-gray-600 bg-black text-white shadow-sm  placeholder:text-gray-400  focus:ring-green-600 sm:py-1.5 sm:text-sm sm:leading-6"
+            class="min-w-full md:max-w-2xl rounded-md border border-gray-600 bg-black text-white shadow-sm  placeholder:text-gray-400  focus:ring-green-600 sm:py-1.5 sm:text-sm sm:leading-6"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
           <div class="mt-2 flex items-center justify-end gap-x-6">
@@ -47,7 +46,7 @@ export default function Publication(props) {
             .map((post, v) => {
               return (
                 <div className="p-4">
-                  <div className="max-w-full mx-auto overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
+                  <div className="max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
                     <div className="md:flex">
                       <div className="p-4 md:shrink-0">
                         {profile.picture ? (

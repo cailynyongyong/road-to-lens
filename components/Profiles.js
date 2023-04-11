@@ -10,7 +10,7 @@ export default function Profile(props) {
   return (
     <div className="p-4">
       <Link href={`/profile/${profile.id}`}>
-        <div className="max-w-md mx-auto overflow-hidden bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
+        <div className="max-w-[65%] overflow-hidden bg-black border border-gray-600 shadow-md rounded-xl">
           <div className="md:flex">
             <div className="p-4 md:shrink-0">
               {profile.picture ? (

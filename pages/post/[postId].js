@@ -7,7 +7,7 @@ import Feed from "../../components/Feed.js";
 import Header from "../../components/Header.js";
 import LensClient, { mumbai, polygon } from "@lens-protocol/client";
 import { useState, useEffect } from "react";
-import { comment } from "postcss";
+import Background from "../../components/Background.js";
 
 const lensClient = new LensClient({
   environment: polygon,
@@ -49,13 +49,10 @@ export default function PostPage() {
     getPublications();
   }, [postId]);
 
-  //   if (loading) return "Loading..";
-  //   if (error) return `Error! ${error.message}`;
-
   return (
-    <div class=" bg-black">
+    <div class="min-h-screen bg-black">
       <Header />
-      <div className="flex flex-col items-center p-8">
+      <div className="p-8 ">
         {/* <Profile profile={post.profile} displayFullProfile={true} /> */}
         {profiles.length != 0 && content.length != 0 && (
           <Feed profile={profiles} post={content} />

@@ -5,6 +5,7 @@ import Header from "../components/Header.js";
 import Feed from "../components/Feed.js";
 import LensClient, { mumbai, polygon } from "@lens-protocol/client";
 import { useState, useEffect } from "react";
+import Background from "../components/Background.js";
 
 const lensClient = new LensClient({
   environment: polygon,
@@ -42,13 +43,13 @@ export default function Home() {
   }, [data]);
 
   return (
-    <div class="bg-black">
+    <div class="min-h-screen bg-black">
       <Header />
-      <header class="bg-black shadow">
+      {/* <header class="bg-black shadow">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <h1 class="text-3xl font-bold tracking-tight text-green-500">Feed</h1>
         </div>
-      </header>
+      </header> */}
       <div>
         <Publication profile={myprofile} displayFullProfile={true} />
         {content.map((e, index) => {

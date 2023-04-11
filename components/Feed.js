@@ -11,7 +11,7 @@ export default function Feed(props) {
   return (
     <div className="p-4 bg-black">
       <Link href={`/post/${post.id}`}>
-        <div className="max-w-full mx-auto overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl md:max-w-2xl">
+        <div className="max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
           <div className="md:flex">
             <div className="p-4 md:shrink-0">
               {profile.picture ? (

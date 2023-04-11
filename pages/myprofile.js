@@ -18,7 +18,7 @@ export default function MyProfilePage() {
   return (
     <div>
       <Header />
-      <div className="flex flex-col items-center p-8">
+      <div className="p-8">
         <Profile
           key={data.profile.id}
           profile={data.profile}
