@@ -72,10 +72,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 w-full bg-black">
       <nav
-        className="flex items-center justify-between max-w-full p-6 mx-auto border-b border-gray-700 lg:px-8"
+        className="flex max-w-full p-4 border-b border-gray-700 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <div className="flex ml-10 sm:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
@@ -96,21 +96,46 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+          <label class="relative block">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <svg class="h-5 w-5 fill-slate-800" viewBox="0 0 20 20">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="gray"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </svg>
+            </span>
+            <input
+              class="placeholder:italic placeholder:text-slate-400 block text-slate-400 bg-slate-800 w-full border border-slate-800 rounded-md py-1 pl-9 pr-3 shadow-sm focus:outline-none sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+            />
+          </label>
           <a
             href="/"
-            className="text-sm font-semibold leading-6 text-green-500"
+            className="px-2 py-1 text-sm font-semibold leading-6 text-green-500 rounded-lg hover:bg-green-50"
           >
             Home Feed
           </a>
           <a
             href="/findothers"
-            className="text-sm font-semibold leading-6 text-green-500"
+            className="px-2 py-1 text-sm font-semibold leading-6 text-green-500 rounded-lg hover:bg-green-50"
           >
             Find Others
           </a>
           <a
             href="/profile/0x01c634"
-            className="text-sm font-semibold leading-6 text-green-500"
+            className="px-2 py-1 text-sm font-semibold leading-6 text-green-500 rounded-lg hover:bg-green-50"
           >
             Profile
           </a>
@@ -120,7 +145,7 @@ export default function Header() {
           className="hidden lg:flex lg:flex-1 lg:justify-end"
           onClick={connect}
         >
-          <span className="text-sm font-semibold leading-6 text-green-500">
+          <span className="px-2 py-1 text-sm font-semibold leading-6 text-green-500 rounded-lg hover:bg-green-50">
             Connect Wallet <span aria-hidden="true">&rarr;</span>
           </span>
         </button>
