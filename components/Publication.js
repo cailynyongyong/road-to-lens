@@ -47,7 +47,7 @@ export default function Publication(props) {
             .map((post, v) => {
               return (
                 <div className="p-4">
-                  <div className="ml-10 max-w-[65%] hover:bg-slate-900 overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
+                  <div className="overflow-y-scroll bg-black border border-gray-600 shadow-md max-w hover:bg-slate-900 rounded-xl">
                     <div className="md:flex">
                       <div className="p-4 md:shrink-0">
                         {profile.picture ? (
@@ -75,10 +75,10 @@ export default function Publication(props) {
                       </div>
                       <div className="p-3">
                         <div className="text-sm font-semibold tracking-wide text-green-500 uppercase">
-                          {profile.handle}
-                          {displayFullProfile &&
-                            profile.name &&
-                            " (" + profile.name + ")"}
+                          {profile.name}
+                        </div>
+                        <div className="text-sm font-semibold tracking-wide text-pink-500 lowercase">
+                          {"@" + profile.handle.split(".lens")[0] + ""}
                         </div>
                         <div className="mt-2 text-sm text-white">{post}</div>
                         <p className="mt-2 text-xs text-white">
