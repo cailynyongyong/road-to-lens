@@ -17,11 +17,11 @@ export default function Publication(props) {
       <div class=" p-4">
         <label
           for="about"
-          class="block ml-10 text-m font-medium leading-6 text-green-500"
+          class="block text-m font-medium leading-6 text-green-500"
         >
           Post
         </label>
-        <div class="ml-10 mt-2 max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
+        <div class="mt-2 max-w overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
           <input
             class="placeholder:italic overflow-y-scroll placeholder:text-slate-400 block text-white bg-black w-full border border-black rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none sm:text-sm"
             placeholder="What's happening?"
@@ -47,7 +47,7 @@ export default function Publication(props) {
             .map((post, v) => {
               return (
                 <div className="p-4">
-                  <div className="ml-10 max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
+                  <div className="ml-10 max-w-[65%] hover:bg-slate-900 overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
                     <div className="md:flex">
                       <div className="p-4 md:shrink-0">
                         {profile.picture ? (

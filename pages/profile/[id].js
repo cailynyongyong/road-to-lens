@@ -30,11 +30,15 @@ export default function ProfilePage() {
   return (
     <div class="bg-black">
       <Header />
-      <div className="p-8">
-        <Profile profile={data.profile} displayFullProfile={true} />
-        {data.publications.items.map((post, idx) => {
-          return <Feed key={idx} profile={data.profile} post={post} />;
-        })}
+      <div class="flex flex-row">
+        <div class="basis-1/2 mt-7 ml-5 container border border-gray-600 rounded-xl">
+          <div className="p-8">
+            <Profile profile={data.profile} displayFullProfile={true} />
+            {data.publications.items.map((post, idx) => {
+              return <Feed key={idx} profile={data.profile} post={post} />;
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

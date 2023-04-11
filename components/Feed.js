@@ -5,8 +5,8 @@ export default function Feed(props) {
   const profile = props.profile;
   const post = props.post;
 
-  console.log("profile: ", profile);
-  console.log("post: ", post);
+  // console.log("profile: ", profile);
+  // console.log("post: ", post);
 
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
@@ -14,7 +14,7 @@ export default function Feed(props) {
   return (
     <div className="p-4 bg-black">
       <Link href={`/post/${post.id}`}>
-        <div className="ml-10 max-w-[65%] overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
+        <div className="overflow-y-scroll bg-black border border-gray-600 shadow-md max-w hover:bg-slate-900 rounded-xl">
           <div className="md:flex">
             <div className="p-4 md:shrink-0">
               {profile.picture ? (
@@ -42,10 +42,10 @@ export default function Feed(props) {
             </div>
             <div className="p-3">
               <div className="text-sm font-semibold tracking-wide text-green-500 uppercase">
-                {profile.handle}
-                {displayFullProfile &&
-                  profile.name &&
-                  " (" + profile.name + ")"}
+                {profile.name}
+              </div>
+              <div className="text-sm font-semibold tracking-wide text-pink-500 lowercase">
+                {"@" + profile.handle.split(".lens")[0] + ""}
               </div>
               <div className="mt-2 text-sm text-white">
                 {post.metadata.content}
