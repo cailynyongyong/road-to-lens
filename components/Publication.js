@@ -48,42 +48,43 @@ export default function Publication(props) {
     setContentURI(contentURI);
   }
 
-  // async function Dispatcher() {
-  //   // create a post via dispatcher, you need to have the dispatcher enabled for the profile
-  //   const viaDispatcherResult =
-  //     await lensClient.publication.createPostViaDispatcher({
-  //       profileId: "0x01c634",
-  //       contentURI,
-  //       collectModule: {
-  //         revertCollectModule: true, // collect disabled
-  //       },
-  //       referenceModule: {
-  //         followerOnlyReferenceModule: false, // anybody can comment or mirror
-  //       },
-  //     });
-  //   console.log(viaDispatcherResult);
-  // }
-
-  // Dispatcher();
+  async function Dispatcher() {
+    console.log("entering dispatcher function");
+    // or with typedData that require signature and broadcasting
+    const viaDispatcherResult =
+      await lensClient.publication.createPostViaDispatcher({
+        profileId: "0x01c634",
+        contentURI,
+        collectModule: {
+          revertCollectModule: true, // collect disabled
+        },
+        referenceModule: {
+          followerOnlyReferenceModule: false, // anybody can comment or mirror
+        },
+      });
+    console.log("exited function");
+    console.log("result:", viaDispatcherResult);
+  }
 
   async function post() {
     await Metadata();
     await Upload();
+    await Dispatcher();
     setContentList([...contentList, postcontent]);
   }
 
   return (
     <div>
-      <div class=" p-4">
+      <div class="p-4">
         <label
           for="about"
           class="block text-m font-medium leading-6 text-green-500"
         >
           Post
         </label>
-        <div class="mt-2 max-w overflow-y-scroll bg-black border border-gray-600 shadow-md rounded-xl">
+        <div class="mt-2 max-w overflow-hidden bg-black border border-gray-600 shadow-md rounded-xl">
           <input
-            class="placeholder:italic overflow-y-scroll placeholder:text-slate-400 block text-white bg-black w-full border border-black rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none sm:text-sm"
+            class="placeholder:italic overflow-hidden placeholder:text-slate-400 block text-white bg-black w-full border border-black rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none sm:text-sm"
             placeholder="What's happening?"
             type="text"
             onChange={(e) => setContent(e.target.value)}
