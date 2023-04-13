@@ -12,9 +12,9 @@ export default function Feed(props) {
   const displayFullProfile = props.displayFullProfile;
 
   return (
-    <div className="p-4 bg-black">
+    <div className="p-4">
       <Link href={`/post/${post.id}`}>
-        <div className="overflow-y-scroll bg-black border border-gray-600 shadow-md max-w hover:bg-slate-900 rounded-xl">
+        <div className="overflow-hidden bg-black border border-gray-600 shadow-md max-w hover:bg-slate-900 rounded-xl">
           <div className="md:flex">
             <div className="p-4 md:shrink-0">
               {profile.picture ? (
