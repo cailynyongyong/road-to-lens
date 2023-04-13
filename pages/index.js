@@ -17,7 +17,6 @@ export default function Home() {
   const [profileList, setprofileList] = useState([]);
 
   const { loading, error, data } = useQuery(recommendedProfiles);
-  console.log(data);
 
   useEffect(() => {
     async function getPublications() {
@@ -32,7 +31,6 @@ export default function Home() {
       for (let i = 0; i < 6; i++) {
         profileList.push(data.recommendedProfiles[i]);
       }
-      console.log(profileList);
       setprofileList(profileList);
 
       const result = await lensClient.publication.fetchAll({
@@ -57,7 +55,7 @@ export default function Home() {
     <div class="min-h-screen bg-black">
       <Header />
       <div class="flex flex-row">
-        <div class="basis-1/2 mt-7 ml-5 container border border-gray-600 rounded-xl">
+        <div class="basis-[70%] mt-7 ml-5 container border border-gray-600 rounded-xl">
           <Publication profile={myprofile} displayFullProfile={true} />
           {content.map((e, index) => {
             return (
