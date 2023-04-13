@@ -1,15 +1,75 @@
 // components/Publication.js
 import { useState } from "react";
+import { uploadIpfs } from "./ipfs";
+import { PublicationMainFocus } from "../interfaces/publication";
+import { v4 as uuidv4 } from "uuid";
+import LensClient, { polygon } from "@lens-protocol/client";
+
+const lensClient = new LensClient({
+  environment: polygon,
+});
+
 export default function Publication(props) {
   const profile = props.profile;
-  const [content, setContent] = useState("");
+  const [postcontent, setContent] = useState("");
   const [contentList, setContentList] = useState([]);
+  const [contentURI, setContentURI] = useState([]);
 
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
 
+  const metadata = {
+    appId: "lenster",
+    attributes: [],
+    content: postcontent,
+    description: "Description of the post created with LensClient SDK",
+    locale: "en-US",
+    mainContentFocus: PublicationMainFocus.TEXT_ONLY,
+    metadata_id: uuidv4(),
+    name: "Post created with LensClient SDK",
+    tags: ["lens-sdk"],
+    version: "2.0.0",
+  };
+
+  async function Metadata() {
+    const validateResult = await lensClient.publication.validateMetadata(
+      metadata
+    );
+    console.log(validateResult);
+    if (!validateResult.valid) {
+      throw new Error(`Metadata is not valid.`);
+    }
+  }
+
+  // upload metadata to ipfs or arweave - upload is your custom function that returns contentURI
+  async function Upload() {
+    const contentURI = await uploadIpfs(metadata);
+    console.log(contentURI);
+    setContentURI(contentURI);
+  }
+
+  // async function Dispatcher() {
+  //   // create a post via dispatcher, you need to have the dispatcher enabled for the profile
+  //   const viaDispatcherResult =
+  //     await lensClient.publication.createPostViaDispatcher({
+  //       profileId: "0x01c634",
+  //       contentURI,
+  //       collectModule: {
+  //         revertCollectModule: true, // collect disabled
+  //       },
+  //       referenceModule: {
+  //         followerOnlyReferenceModule: false, // anybody can comment or mirror
+  //       },
+  //     });
+  //   console.log(viaDispatcherResult);
+  // }
+
+  // Dispatcher();
+
   async function post() {
-    setContentList([...contentList, content]);
+    await Metadata();
+    await Upload();
+    setContentList([...contentList, postcontent]);
   }
 
   return (

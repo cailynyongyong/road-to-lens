@@ -6,7 +6,6 @@ export default function FollowList(props) {
 
   // When displayFullProfile is true, we show more info.
   const displayFullProfile = props.displayFullProfile;
-  console.log(profile);
 
   return (
     <div>
